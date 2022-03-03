@@ -1,6 +1,5 @@
-import jdk.jshell.spi.ExecutionControl;
 import picocli.CommandLine;
-import picocli.CommandLine.*;
+import picocli.CommandLine.Spec;
 import picocli.CommandLine.Command;
 
 
@@ -10,26 +9,26 @@ class Main implements Runnable {
 
     @Command(name = "new", description = "Create a new thing")
     public static void newCmd(){
-        System.out.println("New commande not implemented yet");
+        System.out.println("new commande not implemented yet");
     }
-    @Command(name = "Clean", description = "Clean everything")
-    public static void CleanCmd(){
-       System.out.println("Clean commande not implemented yet");
+    @Command(name = "clean", description = "Clean everything")
+    public static void cleanCmd(){
+       System.out.println("clean commande not implemented yet");
     }
-    @Command(name = "Build", description = "Build a new thing")
-    public static void BuildCmd(){
-        System.out.println("Build commande not implemented yet");
+    @Command(name = "build", description = "Build a new thing")
+    public static void buildCmd(){
+        System.out.println("build commande not implemented yet");
     }
-    @Command(name = "Serve", description = "Serve a thing")
-    public static void ServeCmd(){
-        System.out.println("Serve commande not implemented yet");
+    @Command(name = "serve", description = "Serve a thing")
+    public static void serveCmd(){
+        System.out.println("serve commande not implemented yet");
     }
 
     @Spec
-    Model.CommandSpec spec;
+    CommandLine.Model.CommandSpec spec;
     @Override
     public void run() {
-        throw new ParameterException(spec.commandLine(), "Specify a subcommand");
+        throw new CommandLine.ParameterException(spec.commandLine(), "Specify a subcommand");
     }
 
     // this example implements Callable, so parsing, error handling and handling user
