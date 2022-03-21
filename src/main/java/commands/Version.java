@@ -16,6 +16,7 @@ public class Version implements Callable<Integer> {
             System.out.println("Statique :\tv"+ properties.getProperty("version"));
         }catch (Exception e){
             System.out.println("Error while reading version number:\n"+e.getMessage());
+            return -1;
         }
         return 0;
     }
