@@ -13,7 +13,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
     #clone the repo
     - uses: actions/checkout@v2
@@ -49,7 +48,6 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-
         cache: maven
     - name: Lint
       run: mvn spotless:check
