@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.concurrent.Callable;
 
-@Command(name = "init", description = "Initialize a static site directory")
+@Command(name = "init", description = "Initialise un dossier pour le site statique")
 public class Init implements Callable<Integer> {
     // Chemin vers le template
     private static final Path TEMPLATE_PATH = Paths.get("src/main/resources/index.md");
@@ -22,6 +22,9 @@ public class Init implements Callable<Integer> {
 
     @Override
     public Integer call() throws URISyntaxException, IOException {
+        if (path == null) {
+            throw new NullPointerException("PATH ne doit pas etre null");
+        }
         // Crée le File associé au path
         File destination = new File(path + "/index.md");
         // Vérifie si le dossier existe déjà
