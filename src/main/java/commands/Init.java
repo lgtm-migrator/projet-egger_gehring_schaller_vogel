@@ -17,7 +17,7 @@ public class Init implements Callable<Integer> {
     // Chemin vers le template
     private static final Path TEMPLATE_PATH = Paths.get("src/main/resources/index.md");
 
-    @Parameters(paramLabel = "PATH", description = "The directory for the site")
+    @Parameters(paramLabel = "PATH", description = "Le chemin qui doit contenir le site")
     public String path;
 
     @Override
