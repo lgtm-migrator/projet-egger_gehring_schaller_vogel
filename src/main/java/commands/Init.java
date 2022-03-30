@@ -23,7 +23,7 @@ public class Init implements Callable<Integer> {
     @Override
     public Integer call() throws URISyntaxException, IOException {
         // Crée le File associé au path
-        File destination = new File(path+"/index.md");
+        File destination = new File(path + "/index.md");
         // Vérifie si le dossier existe déjà
         if (destination.exists()) {
             System.err.println("Le dossier existe déjà");
