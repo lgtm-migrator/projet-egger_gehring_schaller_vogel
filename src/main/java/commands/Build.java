@@ -31,7 +31,7 @@ public class Build implements Callable<Integer> {
         String[] file = rootDirectory.list();
 
         assert file != null;
-        //the directory must not be empty
+        // the directory must not be empty
         if (file.length == 0) {
           System.out.println("Error: Empty directory");
           return -1;
