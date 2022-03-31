@@ -20,6 +20,7 @@ public class Build implements Callable<Integer> {
 
   @Override
   public Integer call() throws IOException {
+    // chech param exists
     if (rootDirectory == null) {
       throw new NullPointerException("Le nom de dossier ne peut pas être vide");
     }
@@ -30,6 +31,7 @@ public class Build implements Callable<Integer> {
         String[] file = rootDirectory.list();
 
         assert file != null;
+        //the directory must not be empty
         if (file.length == 0) {
           System.out.println("Error: Empty directory");
           return -1;
@@ -38,6 +40,7 @@ public class Build implements Callable<Integer> {
         // create dir build
         Files.createDirectories(Path.of(rootDirectory + "/build"));
 
+        // read each file
         for (String md : file) {
           File md_file = new File(rootDirectory + "/" + md);
 
