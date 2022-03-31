@@ -1,14 +1,12 @@
 package commands;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.concurrent.Callable;
-
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
-import java.io.File;
 
 @Command(name = "build", description = "Build a static site")
 public class Build implements Callable<Integer> {

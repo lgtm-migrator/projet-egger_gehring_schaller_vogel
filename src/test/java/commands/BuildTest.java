@@ -1,12 +1,11 @@
 package commands;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 public class BuildTest {
   private static final String TEST_PATH_1 = "test1/site/";
