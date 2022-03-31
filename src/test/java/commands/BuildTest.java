@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -84,6 +85,8 @@ public class BuildTest {
 
     File dir = new File(TEST_PATH_1 + "build/");
     String[] result = dir.list();
+    assert result != null;
+    Arrays.sort(result);
     String[] except = {"fichier2.html", "test.html"};
     assertArrayEquals(result, except);
   }
