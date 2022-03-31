@@ -26,6 +26,7 @@ public class Build implements Callable<Integer> {
     if (rootDirectory.exists()) {
       if (rootDirectory.isDirectory()) {
         String[] file = rootDirectory.list();
+        assert file != null;
         if (file != null) {
           System.out.println("Error: Empty directory");
           return -1;
@@ -33,6 +34,7 @@ public class Build implements Callable<Integer> {
 
         // create dir build
         Files.createDirectories(Path.of(rootDirectory + "/build"));
+
         for (String md : file) {
           File md_file = new File(rootDirectory + "/" + md);
 
