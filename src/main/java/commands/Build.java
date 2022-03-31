@@ -18,7 +18,7 @@ public class Build implements Callable<Integer> {
 
   @Override
   public Integer call() throws IOException {
-    // chech param exists
+    // check param exists
     if (rootDirectory == null) {
       throw new NullPointerException("Le nom de dossier ne peut pas être vide");
     }
