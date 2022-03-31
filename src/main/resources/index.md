@@ -1,11 +1,7 @@
-title:  'Mon premier article'
-author:
-- Jane Doe
-- John Doe
-description: |
-  Voilà une description du site
-
-  En deux paragraphes
+---
+title: Mon premier article
+author: Jane Doe
+date: March 31, 2022
 ---
 # Mon premier article
 ## Mon sous-titre
