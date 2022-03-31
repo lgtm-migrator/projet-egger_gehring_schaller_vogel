@@ -1,7 +1,7 @@
 
 package commands;
 import java.io.IOException;
-import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.Callable;
 
@@ -16,12 +16,14 @@ public class Build implements Callable<Integer> {
     @CommandLine.Parameters(paramLabel = "rootDirectory", description = "root directory of markdown files")
     public File rootDirectory;
 
-    @Override public Integer call() throws IOException {
+    @Override public Integer call() throws IOException, InterruptedException {
         if(rootDirectory.exists()){
             if(rootDirectory.isDirectory()){
                 String[] file = rootDirectory.list();
                 assert file != null;
-                
+
+                //create dir
+                Files.createDirectories(Path.of(rootDirectory + "/build"));
                 for( String md : file){
                     File md_file = new File(rootDirectory + "/" + md);
 
@@ -35,8 +37,10 @@ public class Build implements Callable<Integer> {
                         //check extension is md
                         if(extension.equals(".md")) {
                             String fileNameWithOutExt = name.substring(0, ext);
-                            System.out.println("nom: " + fileNameWithOutExt + " extension: " + extension);
 
+                            Runtime runtime = Runtime.getRuntime();
+                            String command = "pandoc --standalone -o "+  rootDirectory + "/build/" +fileNameWithOutExt + ".html " +  rootDirectory + "/" + fileNameWithOutExt + ".md";
+                            runtime.exec(command);
 
                         }
 
