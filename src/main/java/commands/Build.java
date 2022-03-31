@@ -3,6 +3,7 @@ package commands;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.concurrent.Callable;
 
 import picocli.CommandLine;
@@ -25,9 +26,11 @@ public class Build implements Callable<Integer> {
 
     if (rootDirectory.exists()) {
       if (rootDirectory.isDirectory()) {
+
         String[] file = rootDirectory.list();
+
         assert file != null;
-        if (file != null) {
+        if (file.length == 0) {
           System.out.println("Error: Empty directory");
           return -1;
         }

@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BuildTest {
   private static final String TEST_PATH_1 = "test1/site/";
@@ -63,5 +62,29 @@ public class BuildTest {
     build.rootDirectory = new File("*qwert");
     // assert que build retourne sans erreur
     assertEquals(build.call(), -1);
+  }
+
+  @Test
+  public void testBuildCreateDirectoryBuild() throws IOException {
+    Build build = new Build();
+    build.rootDirectory = new File(TEST_PATH_1);
+    // assert que build retourne sans erreur
+    assertEquals(build.call(), 0);
+
+    File dir = new File(TEST_PATH_1 + "build/");
+    assertTrue(dir.exists());
+  }
+
+  @Test
+  public void testBuildCreateFileHtml() throws IOException {
+    Build build = new Build();
+    build.rootDirectory = new File(TEST_PATH_1);
+    // assert que build retourne sans erreur
+    assertEquals(build.call(), 0);
+
+    File dir = new File(TEST_PATH_1 + "build/");
+    String[] result = dir.list();
+    String[] except = {"fichier2.html", "test.html"};
+    assertArrayEquals(result, except);
   }
 }
