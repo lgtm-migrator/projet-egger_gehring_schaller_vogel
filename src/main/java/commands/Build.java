@@ -31,7 +31,7 @@ public class Build implements Callable<Integer> {
                 assert file != null;
                 // the directory must not be empty
                 if (file.length == 0) {
-                    System.out.println("Error: Empty directory");
+                    System.err.println("Error: Empty directory");
                     return -1;
                 }
 
@@ -70,12 +70,12 @@ public class Build implements Callable<Integer> {
                 }
 
             } else {
-                System.out.println("Error: not a directory");
+                System.err.println("Error: not a directory");
                 return -1;
             }
 
         } else {
-            System.out.println("Error: incorrect directory");
+            System.err.println("Error: incorrect directory");
             return -1;
         }
 
