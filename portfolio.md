@@ -30,7 +30,7 @@ Le déroulement typique d'une session peut être décrite ainsi :
 * Une fois la tâche terminée, une pull request est créée et une review est nécessaire avant de pouvoir merge la branche de la tâche sur la branche principale
 * Après un review positif et la branche mergée, on peut supprimer la branche et commencer à travailler sur la prochaine tâche
 
-f
+
 Le nom de branche doit être clair et faire écho à la tâche qu'elle concerne.
 
 Chaque tâche doit être accompagnée de documentation complète et de tests.
@@ -46,7 +46,7 @@ La PR doit être accompagnée d'un "Closes #n" ou n correspond au numéro de l'i
 Les sprints imposés par le cours nous donne le cadre agile de la même manière que si nous interagissions avec un client.
 Nos réunions ont lieux de manière hebdomadaires durant les heures de laboratoires. Nous faisons des petits metting au chill de manière fortuite ou par l'intermédiaire de télégram.
 Les PR doivent avoir des commits signés.
-Les PR doivent être accompagnée de tests unitaires portant sur les nouvelles fonctionnalités et avoir le code formaté selon les conventions GOOGLE.
+Les PR doivent être accompagnée de tests unitaires portant sur les nouvelles fonctionnalités et avoir le code formaté selon les conventions Google.
 
 
 ## Outils
@@ -63,13 +63,13 @@ Nous avons utilisé un kanban pour organiser nos tâches avec les colonnes suiva
 
 Cette section contient les différents problèmes que nous avons encourrus, les solutions que nous avons trouvées pour y faire face, ainsi que les leçons que nous en avons tirées.
 
-| **Problème** | **Solution** | **Leçon** |
-|--------------|--------------|-----------|
-|Erreur dans le template d'exemple             |Reprendre un exemple correcte           |Si le code compile, il n'est pas forcement bon, vérifier le bon fonctionnement d'un effet de bord est compliqué           |
-|Oublier de signer un commit dans une PR        |faire un git commit --amend --signoff puis un push --force-with-lease.             |  Configurer la signature automatique : git config --global commit.gpgsign true          |
-|              |              |           |
+| **Problème**                                    | **Solution**                                                           | **Leçon**                                                                                                       |
+|-------------------------------------------------|------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| Erreur dans le template d'exemple               | Reprendre un exemple correcte                                          | Si le code compile, il n'est pas forcement bon, vérifier le bon fonctionnement d'un effet de bord est compliqué |
+| Oublier de signer le dernier commit dans une PR | faire un git commit --amend --signoff puis un push --force-with-lease. | Configurer la signature automatique : git config --global commit.gpgsign true                                   |
+| Oublier de signer un ancien commit dans une PR  | Refaire une branche et prendre les changements                         | Configurer la signature automatique :  git config --global commit.gpgsign                                       |
 
-Nous avons décidé de mettre très tôt une cicd github afin d'automatiser les testes et de pouvoir faciliter les reviews.
+Nous avons décidé de mettre très tôt une cicd github afin d'automatiser les tests et de pouvoir faciliter les reviews.
 Nous avons aussi choisis un style de code(Google) et l'avons rendu obligatoire dans la codebase à l'aide d'un teste du cicd.
 Cependant, afin de ne pas avoir un commit qui formate toute la codebase, nous l'avons configuré de sorte à n'avoir le teste que sur les fichiers différents de 
 la branche main ainsi, une personne peut commit et push (et merge si sa PR répond aux exigences) sans être bloqué par la pipeline cicd à cause de fichiers
@@ -80,9 +80,9 @@ comme [mustache](https://github.com/spullara/mustache.java) a été envisagé ma
 simple à prendre en main.  
 
 Nous avons aussi remarqué, lors du découpage des stories en issues, que c'était plus compliqué que prévu et que le découpage d'un problème réel en une solution informatique
-créait des conflits d'organisation. En effet, lors de ce premier sprint les stories étaient simples 
-et nous avons donc eu 1 seule issue par stories, Nous avons donc eu 1 issue et 1 user story pour une tâche, grâce à notre règle de mettre dans la PR close #n, l'issue était fermée alors que la storie pas forcément.
-Le découpage a été immédiatement fait au début alors que nous aurions pu attendre un peu et le faire de manière incrémentale, c'est ce que nous ferons les prochaines fois
+créait des conflits d'organisation. En effet, lors de ce premier sprint les stories étaient simples et nous avons donc eu 1 seule issue par story, Nous avons donc eu 1 issue et 1 user story pour une tâche, 
+grâce à notre règle de mettre dans la PR close #n, l'issue était fermée mais la story pas forcément.
+Le découpage a été immédiatement fait au début alors que nous aurions pu attendre un peu et le faire de manière incrémentale, c'est ce que nous ferons les prochaines fois.
 
 Nous n'avons pour l'instant pas mis un modèle pour les issues, mais nous envisageons ceci pour le prochain sprint.
 
