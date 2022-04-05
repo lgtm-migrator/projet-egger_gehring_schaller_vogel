@@ -19,7 +19,7 @@ public class Clean implements Callable<Integer> {
         if (site == null) {
             throw new NullPointerException("site ne doit pas etre null");
         }
-        Path path = Paths.get( System.getProperty("user.dir") + site.toString() + "//build");
+        Path path = Paths.get(System.getProperty("user.dir") + site.toString() + "//build");
         File file = path.toFile();
 
         if (!file.exists() || !file.isDirectory()) {
@@ -28,8 +28,6 @@ public class Clean implements Callable<Integer> {
 
         delete(file);
         return 0;
-
-
     }
 
     private void delete(File file) throws IOException {
@@ -38,7 +36,6 @@ public class Clean implements Callable<Integer> {
             if (entries != null) {
                 for (File entry : entries) {
                     delete(entry);
-
                 }
             }
         }
