@@ -27,7 +27,7 @@ Notre projet est sous [Licence MIT](https://github.com/dil-classroom/projet-egge
  - Faire `unzip statique.zip` 
  - Faire `java -cp "statique/lib/*" Statique `
 
-Vous devriez voir l'aide du programme affiché sur votre écran après la dernier commandetar.
+Vous devriez voir l'aide du programme affiché sur votre écran comme ci-dessous.
 
     Usage: statique [COMMAND]
     A brand new static site generator.
