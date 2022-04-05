@@ -32,7 +32,7 @@ Le déroulement typique d'une session peut être décrite ainsi :
 * Nous discutons ensemble des tâches à réaliser, sélectionnons les premières user stories et créons les issues correspondantes
 * Nous attribuons 1 ou 2 personnes à chaque tâche, en équilibrant les charges autant que possible. La / les personne(s) assignée(s) estime(nt) le temps pessimiste, attendu et optimiste avant de commencer à travailler.
 * Chaque personne (ou sous-groupe) commence à travailler sur sa tâche, en mettant à jour le kanban et en créant une nouvelle branche pour y travailler sans conflit sur la branche main. A la fin, l'équipe écrit des tests pour vérifier le fonctionnement de la feature.
-* Une fois la tâche terminée et les tests régidés, une pull request est créée et au moins une review est nécessaire avant de pouvoir merge la branche de la tâche sur la branche principale
+* Une fois la tâche terminée et les tests rédigés, une pull request est créée et au moins une review est nécessaire avant de pouvoir merge la branche de la tâche sur la branche principale
 * Après un review positive et la branche mergée, et on peut supprimer la branche et commencer à travailler sur la prochaine tâche
 
 
@@ -76,6 +76,7 @@ Cette section contient les différents problèmes que nous avons encourus, les s
 | Oublier de signer le dernier commit dans une PR | faire un git commit --amend --signoff puis un push --force-with-lease. | Configurer la signature automatique : git config --global commit.gpgsign true                                   |
 | Oublier de signer un ancien commit dans une PR  | Refaire une branche et prendre les changements                         | Configurer la signature automatique :  git config --global commit.gpgsign                                       |
 | Oublier d'ajouter les estimations de temps      | Ajouter les estimations par après                                      | Etre plus rigoureux lors de l'étape d'assignation des taches                                                    |
+| Push sur main n'était pas bloqué                | Chercher d'ou vient le problème sur StackOverflow                      | Nous devrions vérifier plus assidument nos mesures de sécurités lorsque nous les mettons en place               |
 
 Nous avons décidé de mettre très tôt une cicd github afin d'automatiser les tests et de pouvoir faciliter les reviews.
 Nous avons aussi choisis un style de code(Google) et l'avons rendu obligatoire dans la codebase à l'aide d'un teste du cicd.
@@ -95,5 +96,7 @@ Nous avons aussi remarqué, lors du découpage des stories en issues, que c'éta
 créait des conflits d'organisation. En effet, lors de ce premier sprint les stories étaient simples et nous avons donc eu 1 seule issue par story, Nous avons donc eu 1 issue et 1 user story pour une tâche,
 grâce à notre règle de mettre dans la PR close #n, l'issue était fermée mais la story pas forcément.
 Le découpage a été immédiatement fait au début alors que nous aurions pu attendre un peu et le faire de manière incrémentale, c'est ce que nous ferons les prochaines fois.
+
+Nous avons réalisé par erreur que nos mesures de sécurités pour empecher de push sur la branche main sans passer par des pull requests ne fonctionnait pas. Il fallait ajouter cette règle aux administrateurs également, ce que nous n'avions pas fait.
 
 Nous n'avons pas écrit de tests avant de commencer à implémenter les features, nous les avons faits par après pour en vérifier le fonctionnement. Nous envisageons de réaliser des tests avant de commencer à programmer pour les prochains sprints.
