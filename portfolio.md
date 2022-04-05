@@ -64,6 +64,7 @@ Nous avons utilisé un kanban pour organiser nos tâches avec les colonnes suiva
  - Tâches à réaliser : Ce sont les étapes/issues qui résolvent les stories utilisateur(problèmes) qui ne sont pas encore en cours de réalisation ou réalisées. 
  - En cours : les tâches/issues qui sont en cours de réalisation.
  - Terminé : les tâches qui ont une PR qui a été validée et qui ont été merge. Cette colonne est automatiquement mise à jour.
+ - Stories réalisées : les stories qui ont été séparées en plusieurs tâches qui ont toutes été validée et merge. Cette colonne n'est pas automatiquement mise à jour, puisque plusieurs taches peuvent etre liées à une story, il est difficile de l'automatiser.
 
 
 ## Troubleshooting
