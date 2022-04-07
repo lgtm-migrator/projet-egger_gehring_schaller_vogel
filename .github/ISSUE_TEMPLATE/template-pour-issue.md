@@ -1,16 +1,16 @@
 ---
 name: template pour issue
-about: Describe this issue template's purpose here.
+about: template pour clarifier ce que doit contenir nos issues.
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-description de la tâche
+Description de la tâche
 
 Lié à la story #x
 
-optimiste: xhxxmin
-actuel: xhxxmin
-pessimiste: xhxxmin
+Optimiste: xhxxmin
+Actuel: xhxxmin
+Pessimiste: xhxxmin
