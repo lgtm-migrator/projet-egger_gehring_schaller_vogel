@@ -64,7 +64,11 @@ public class Build implements Callable<Integer> {
                                             + "/"
                                             + fileNameWithOutExt
                                             + ".md";
-                            runtime.exec(command);
+                            try {
+                                runtime.exec(command).waitFor();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }
