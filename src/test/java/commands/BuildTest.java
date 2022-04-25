@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.IOException;
-import org.apache.commons.io.FileUtils;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.*;
 import utils.DirectoryDeleter;
 
@@ -145,19 +145,20 @@ public class BuildTest {
         DirectoryDeleter.delete(directory3);
     }
 
-
     @Test
     void genHtmlFromMarkdown() {
         String markdown = "# Hello World";
         String html = Build.genHtmlFromMarkdown(markdown);
         assertEquals("<h1>Hello World</h1>\n", html);
     }
+
     @Test
     void genHtmlFromMarkdownHeader2() {
         String markdown = "## Hello World";
         String html = Build.genHtmlFromMarkdown(markdown);
         assertEquals("<h2>Hello World</h2>\n", html);
     }
+
     @Test
     void genHtmlFromMarkdownHeader3() {
         String markdown = "### Hello World";
@@ -168,33 +169,32 @@ public class BuildTest {
     void setUp() throws IOException, URISyntaxException {
         var ri = Build.class.getClassLoader().getResource("exempleSite");
         try {
-            var srcFile =  Path.of(ri.getPath()).toFile();
-            FileUtils.copyDirectory( srcFile, Path.of(siteFolderName).toFile());
+            var srcFile = Path.of(ri.getPath()).toFile();
+            FileUtils.copyDirectory(srcFile, Path.of(siteFolderName).toFile());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-
     void tearDown() {
         DirectoryDeleter.delete(new File(siteFolderName));
     }
+
     @Test
     void createHtmlFromContentFile() {
-        try{
+        try {
             setUp();
             Build b = new Build();
             b.rootDirectory = new File(siteFolderName);
             b.call();
-            var index = Path.of(siteFolderName.toString(), "build","index.html").toFile();
-            assert(index.exists());
-            //there should be template, content, and build
+            var index = Path.of(siteFolderName.toString(), "build", "index.html").toFile();
+            assert (index.exists());
+            // there should be template, content, and build
             var site = Path.of(siteFolderName).toFile();
             assertTrue(site.exists());
             assertNotNull(site.list());
-            assertEquals( 3,site.list().length);
-        }
-        catch (Exception e){
+            assertEquals(3, site.list().length);
+        } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Erreur" + e.getMessage());
         }
