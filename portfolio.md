@@ -7,7 +7,7 @@ Ce document contient le portfolio du projet de groupe dans le cadre du cours DIL
 
 ## Méthodologie
 
-### Equipe
+### Equipe 
 
 Nous sommes une équipe composée de 4 personnes : Magali Egger, Mélissa Gehring, Joris Schaller et Maëlle Vogel. Nous avons une bonne synergie, nous entendons très bien et avons l'habitude de travailler ensemble. Notre groupe ne comporte à priori pas de leader, nous avons une hiérarchie horizontale.
 
