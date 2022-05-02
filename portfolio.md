@@ -4,6 +4,8 @@
 
 Ce document contient le portfolio du projet de groupe dans le cadre du cours DIL 2022 de la HEIG-VD. Le projet est commissionné par l'équipe responsable du cours, et ils font donc office de ''client'' et de product owner.
 
+Ce projet a pour but de créer un générateur de site statique. Le programme sera écrit en java et utilisera la librairie handlebars.
+
 
 ## Méthodologie
 
@@ -101,3 +103,13 @@ Le découpage a été immédiatement fait au début alors que nous aurions pu at
 Nous avons réalisé par erreur que nos mesures de sécurités pour empecher de push sur la branche main sans passer par des pull requests ne fonctionnait pas. Il fallait ajouter cette règle aux administrateurs également, ce que nous n'avions pas fait.
 
 Nous n'avons pas écrit de tests avant de commencer à implémenter les features, nous les avons faits par après pour en vérifier le fonctionnement. Nous envisageons de réaliser des tests avant de commencer à programmer pour les prochains sprints.
+
+## Sprint 2
+
+### Etat actuelle du projet
+
+### Comparaison des temps attendus et actuelles
+
+### Ce qui pourrait être amélioré
+
+### Ce qui doit être continué pendant le prochain sprint
