@@ -6,6 +6,8 @@ Ce document contient le portfolio du projet de groupe dans le cadre du cours DIL
 
 Ce projet a pour but de créer un générateur de site statique. Le programme sera écrit en java et utilisera la librairie handlebars.
 
+Ce projet met en pratique les méthodologies de gestion de projet vu pendant le cours de DIL notamment le processus agile et aussi les guidelines comme "commit early, commit often" ou encore les tests continues.
+
 
 ## Méthodologie
 
@@ -23,7 +25,7 @@ Notre team est très complémentaire, nous avons une bonne connaissance des diff
 Certain d'entre nous avons déjà une expérience dans le développement de site web.
 Melissa a déjà suivi un cours d'ingénierie logiciel ce qui nous fournit un avantage.
 Joris a l'habitude de rechercher des solutions à des problèmes, des librairies déjà existantes, afin de ne pas réinventer la roue.
-Maelle est très organisée et nous aide à garder un oeil sur les deadlines.
+Maëlle est très organisée et nous aide à garder un oeil sur les deadlines.
 Magali est touche-à-tout et est toujours là pour nous motiver et nous faire rire.
 
 
@@ -32,6 +34,7 @@ Magali est touche-à-tout et est toujours là pour nous motiver et nous faire ri
 Le déroulement typique d'une session peut être décrite ainsi :
 
 * Nous discutons ensemble des tâches à réaliser, sélectionnons les premières user stories et créons les issues correspondantes
+ * Chaque user story est discuté dans le groupe pour décider comment la sous-diviser en issue.  
 * Nous attribuons 1 ou 2 personnes à chaque tâche, en équilibrant les charges autant que possible. La / les personne(s) assignée(s) estime(nt) le temps pessimiste, attendu et optimiste avant de commencer à travailler.
 * Chaque personne (ou sous-groupe) commence à travailler sur sa tâche, en mettant à jour le kanban et en créant une nouvelle branche pour y travailler sans conflit sur la branche main. A la fin, l'équipe écrit des tests pour vérifier le fonctionnement de la feature.
 * Une fois la tâche terminée et les tests rédigés, une pull request est créée et au moins une review est nécessaire avant de pouvoir merge la branche de la tâche sur la branche principale
@@ -60,13 +63,15 @@ Nous allons utiliser un système de releases pour déployer notre logiciel.
 En principe nous rédigeons toute la documentation en français.
 
 ## Outils
+
 ### Kanban automatique (en liant les issues entre elles et en créant les pull requests qui ferment lesdites issues)
+
 Nous avons utilisé un kanban pour organiser nos tâches avec les colonnes suivantes : 
- - Stories utilisateur : les stories utilisateurs sont les user stories qui nous permettent de définir les tâches/issues à réaliser.
- - Tâches à réaliser : Ce sont les étapes/issues qui résolvent les stories utilisateur(problèmes) qui ne sont pas encore en cours de réalisation ou réalisées. 
- - En cours : les tâches/issues qui sont en cours de réalisation.
- - Terminé : les tâches qui ont une PR qui a été validée et qui ont été merge. Cette colonne est automatiquement mise à jour.
- - Stories réalisées : les stories qui ont été séparées en plusieurs tâches qui ont toutes été validée et merge. Cette colonne n'est pas automatiquement mise à jour, puisque plusieurs taches peuvent etre liées à une story, il est difficile de l'automatiser.
+ * Stories utilisateur : les stories utilisateurs sont les user stories qui nous permettent de définir les tâches/issues à réaliser.
+ * Tâches à réaliser : Ce sont les étapes/issues qui résolvent les stories utilisateur(problèmes) qui ne sont pas encore en cours de réalisation ou réalisées. 
+ * En cours : les tâches/issues qui sont en cours de réalisation.
+ * Terminé : les tâches qui ont une PR qui a été validée et qui ont été merge. Cette colonne est automatiquement mise à jour.
+ * Stories réalisées : les stories qui ont été séparées en plusieurs tâches qui ont toutes été validée et merge. Cette colonne n'est pas automatiquement mise à jour, puisque plusieurs taches peuvent etre liées à une story, il est difficile de l'automatiser.
 
 
 ## Troubleshooting
@@ -87,8 +92,6 @@ Cependant, afin de ne pas avoir un commit qui formate toute la codebase, nous l'
 la branche main ainsi, une personne peut commit et push (et merge si sa PR répond aux exigences) sans être bloqué par la pipeline cicd à cause de fichiers
 non modifiés qui ne sont pas correctement formaté.
 
-Nous n'avons pour l'instant pas mis de template imposé pour les issues ou pour les PR, étant donné que nous avons décrit ce qu'elles devaient contenir, mais nous envisageons de le faire pour le prochain sprint.
-
 ## Sprint 1
 
 Avant de commencer ce sprint, nous avons évalué nos possibilités pour fournir un outil capable de générer un site statique, l'utilisation d'un moteur de template
@@ -108,8 +111,20 @@ Nous n'avons pas écrit de tests avant de commencer à implémenter les features
 
 ### Etat actuelle du projet
 
+Nous sommes passé de pandoc à handelbars car avec l'ajout des templates l'utilisation de pandoc devenait compliquée.
+La commande build a été mise à jour pour utiliser handelbar et prendre en compte les templates.
+
+Hélàs la continuous delivery n'a pas pu être mise en place par manque de temps.
+
 ### Comparaison des temps attendus et actuelles
+
+Nous avons souvent pris plus de temps qu'attendu car nous avons plusieurs projets en parralléle. Toujours devoir se replonger dans le code nous fais perdre du temps.
 
 ### Ce qui pourrait être amélioré
 
+Nous pourrions tenir à jour le portfolio plus souvent pour éviter de devoir tout écrire au dernier moment.
+Les tests devraient être écrit avant la rédaction du code. Ou du moins un pseudo-code pour savoir à quoi s'attendre.
+
 ### Ce qui doit être continué pendant le prochain sprint
+
+Nous devons encore ajouter la continuous delivery.
