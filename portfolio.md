@@ -2,7 +2,11 @@
 
 ## Introduction
 
-Ce document contient le portfolio du projet de groupe dans le cadre du cours DIL 2022 de la HEIG-VD. Le projet est commissionné par l'équipe responsable du cours, et ils font donc office de ''client'' et de product owner.
+Ce document contient le portfolio du projet de groupe dans le cadre du cours DIL 2022 de la HEIG-VD. Le projet est commissionné par l'équipe responsable du cours, et ils font donc office de ''client'' et de product owner. 
+
+Ce projet a pour but de créer un générateur de site statique. Le programme sera écrit en java et utilisera la librairie handlebars. 
+
+Ce projet met en pratique les méthodologies de gestion de projet vu pendant le cours de DIL notamment le processus agile et aussi les guidelines comme "commit early, commit often" ou encore les tests continues. 
 
 
 ## Méthodologie
@@ -21,7 +25,7 @@ Notre team est très complémentaire, nous avons une bonne connaissance des diff
 Certain d'entre nous avons déjà une expérience dans le développement de site web.
 Melissa a déjà suivi un cours d'ingénierie logiciel ce qui nous fournit un avantage.
 Joris a l'habitude de rechercher des solutions à des problèmes, des librairies déjà existantes, afin de ne pas réinventer la roue.
-Maelle est très organisée et nous aide à garder un oeil sur les deadlines.
+Maëlle est très organisée et nous aide à garder un oeil sur les deadlines.
 Magali est touche-à-tout et est toujours là pour nous motiver et nous faire rire.
 
 
@@ -30,6 +34,9 @@ Magali est touche-à-tout et est toujours là pour nous motiver et nous faire ri
 Le déroulement typique d'une session peut être décrite ainsi :
 
 * Nous discutons ensemble des tâches à réaliser, sélectionnons les premières user stories et créons les issues correspondantes
+ * Chaque user story est discuté au sain du groupe 
+ * Nous emmetons ensuite des hypothèses sur les fonctionnalités tehniques nécessaire à l'implémentation de chaque stories
+ * Nous décidons ensuite des issues qui seront crée à partir de chaque story.
 * Nous attribuons 1 ou 2 personnes à chaque tâche, en équilibrant les charges autant que possible. La / les personne(s) assignée(s) estime(nt) le temps pessimiste, attendu et optimiste avant de commencer à travailler.
 * Chaque personne (ou sous-groupe) commence à travailler sur sa tâche, en mettant à jour le kanban et en créant une nouvelle branche pour y travailler sans conflit sur la branche main. A la fin, l'équipe écrit des tests pour vérifier le fonctionnement de la feature.
 * Une fois la tâche terminée et les tests rédigés, une pull request est créée et au moins une review est nécessaire avant de pouvoir merge la branche de la tâche sur la branche principale
@@ -58,13 +65,15 @@ Nous allons utiliser un système de releases pour déployer notre logiciel.
 En principe nous rédigeons toute la documentation en français.
 
 ## Outils
+
 ### Kanban automatique (en liant les issues entre elles et en créant les pull requests qui ferment lesdites issues)
+
 Nous avons utilisé un kanban pour organiser nos tâches avec les colonnes suivantes : 
- - Stories utilisateur : les stories utilisateurs sont les user stories qui nous permettent de définir les tâches/issues à réaliser.
- - Tâches à réaliser : Ce sont les étapes/issues qui résolvent les stories utilisateur(problèmes) qui ne sont pas encore en cours de réalisation ou réalisées. 
- - En cours : les tâches/issues qui sont en cours de réalisation.
- - Terminé : les tâches qui ont une PR qui a été validée et qui ont été merge. Cette colonne est automatiquement mise à jour.
- - Stories réalisées : les stories qui ont été séparées en plusieurs tâches qui ont toutes été validée et merge. Cette colonne n'est pas automatiquement mise à jour, puisque plusieurs taches peuvent etre liées à une story, il est difficile de l'automatiser.
+ * Stories utilisateur : les stories utilisateurs sont les user stories qui nous permettent de définir les tâches/issues à réaliser.
+ * Tâches à réaliser : Ce sont les étapes/issues qui résolvent les stories utilisateur(problèmes) qui ne sont pas encore en cours de réalisation ou réalisées. 
+ * En cours : les tâches/issues qui sont en cours de réalisation.
+ * Terminé : les tâches qui ont une PR qui a été validée et qui ont été merge. Cette colonne est automatiquement mise à jour.
+ * Stories réalisées : les stories qui ont été séparées en plusieurs tâches qui ont toutes été validée et merge. Cette colonne n'est pas automatiquement mise à jour, puisque plusieurs taches peuvent etre liées à une story, il est difficile de l'automatiser.
 
 
 ## Troubleshooting
@@ -85,8 +94,6 @@ Cependant, afin de ne pas avoir un commit qui formate toute la codebase, nous l'
 la branche main ainsi, une personne peut commit et push (et merge si sa PR répond aux exigences) sans être bloqué par la pipeline cicd à cause de fichiers
 non modifiés qui ne sont pas correctement formaté.
 
-Nous n'avons pour l'instant pas mis de template imposé pour les issues ou pour les PR, étant donné que nous avons décrit ce qu'elles devaient contenir, mais nous envisageons de le faire pour le prochain sprint.
-
 ## Sprint 1
 
 Avant de commencer ce sprint, nous avons évalué nos possibilités pour fournir un outil capable de générer un site statique, l'utilisation d'un moteur de template
@@ -101,3 +108,36 @@ Le découpage a été immédiatement fait au début alors que nous aurions pu at
 Nous avons réalisé par erreur que nos mesures de sécurités pour empecher de push sur la branche main sans passer par des pull requests ne fonctionnait pas. Il fallait ajouter cette règle aux administrateurs également, ce que nous n'avions pas fait.
 
 Nous n'avons pas écrit de tests avant de commencer à implémenter les features, nous les avons faits par après pour en vérifier le fonctionnement. Nous envisageons de réaliser des tests avant de commencer à programmer pour les prochains sprints.
+
+## Sprint 2
+
+### Etat actuelle du projet
+
+Nous sommes passé de pandoc à handelbars car avec l'ajout des templates l'utilisation de pandoc devenait compliquée.
+La commande build a été mise à jour pour utiliser handelbar et prendre en compte les templates.
+
+Hélàs la continuous delivery n'a pas pu être mise en place par manque de temps. De plus, nous n'avons pas pu implementé la commande init, car la personne en charge de cette issue s'est trouvé submergé par d'autres projets (Baleinev) et n'a donc pas pu terminer cet aspect du sprint. Néanmoins, nous avons pu mener à bien ce sprint grâce à l'investissement et le travail accomplie par le groupe 
+
+### Methode de conception 
+Lors de ce sprint, nous avons tenté de mettre en place une méthode de conception, en commençant par brain-stormer sur le projet à l'aide de petites notes et de croquis dans le but d'explorer plusieurs idées, par exemple sur les outils à utiliser ou encore sur l'architecture des dossiers. La plupart des idées émisent ont finalement été abandonnées mais cette méthodes nous a au moins permis de nous mettre d'accord sur certain aspect du projet. 
+Nous n'avons pas beaucoup travaillé avec la notion de décomposition mais avec du recul, nous avons réalisé que nous cela nous aurait aidé de décomposer le projet. Notamment en modélisant les interactions des différents composants. Par exemple à l'aide d'un diagramme de séquence. 
+
+### Refactoring
+Nous nous en sommes plutôt bien sortie avec l'aspect de refactoring du code. Cela peut être une opération problématique si elle n'est pas faite consciencieusement. Il n'est pas toujours évident de changer un code déjà implementé dans le but de le réutiliser dans un autre projet. Cela nous a demandé de nous y préparer en amont de réflechir à ces questions avant de coder. 
+
+### Comparaison des temps attendus et actuelles
+
+Nous avons souvent pris plus de temps qu'attendu car nous avons plusieurs projets en parralléle. Toujours devoir se replonger dans le code nous fais perdre du temps. Nous commençons à tirer des leçons concernant la gestion de temps de travail. En effet, nous avons réalisé que nous sous-estimons le temps nécessaire pour une issue, car nous ne prenons pas suffisamment en compte les problèmes potentiels. De plus, nous ne considérons pas toujours le temps nécessaire à l'acquisition de nouvelle compétence, ainsi que les délais engendrés par le fait de jungler entre plusieurs projets. 
+
+### Automatisation
+
+Nous avons exploré l'automatisation en mettant en place un système automatique pour les messages des commits. Beaucoup d'autre aspect du projet aurait pu être automatisé. Mais nous avons craint que la mise en place de ces automatisations prennent plus de temps que de continuer le projet sans cela. Ce choix est difficile car il nécessite d'avoir une bonne connaissance des besoins à venir du projet ainsi que sa temporalité.
+
+### Ce qui pourrait être amélioré
+
+Nous pourrions tenir à jour le portfolio plus souvent pour éviter de devoir tout écrire au dernier moment. En effet, nous sommes souvent plus concentrés sur le code que sur la gestion du projet en lui-même. Ce qui peut engendrer des problèmes organisationnels et ainsi nuire à la qualité du travail fourni. 
+Les tests devraient être écrit avant la rédaction du code. Une bonne solution pourrait être de les écrire en pseudo-code pour savoir à quoi s'attendre et ainsi avoir une meilleure idée de ce à quoi nous attendre. 
+
+### Ce qui doit être continué pendant le prochain sprint
+
+Nous devons encore ajouter la continuous delivery. 
