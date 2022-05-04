@@ -56,7 +56,7 @@ public class Serve implements Callable<Integer> {
         return 0;
     }
 
-    private static String readFile(String path, Charset encoding) throws IOException {
+    private String readFile(String path, Charset encoding) throws IOException {
         byte[] encoded = Files.readAllBytes(Paths.get(path));
         return new String(encoded, encoding);
     }
@@ -67,10 +67,10 @@ public class Serve implements Callable<Integer> {
         server.createContext("/", new MyHttpHandler());
         server.setExecutor(threadPoolExecutor);
         server.start();
-        System.out.println("Server started on port 8001");
+        System.out.println("Server started on port " + port);
     }
 
-    private static class MyHttpHandler implements HttpHandler {
+    private class MyHttpHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange httpExchange) throws IOException {
             handleResponse(httpExchange);
@@ -78,12 +78,11 @@ public class Serve implements Callable<Integer> {
 
         private void handleResponse(HttpExchange httpExchange) throws IOException {
             OutputStream outputStream = httpExchange.getResponseBody();
-            String htmlResponse = readFile("index.html", StandardCharsets.UTF_8);
+            String htmlResponse = readFile(rootDirectory + "/build/index.html", StandardCharsets.UTF_8);
             httpExchange.sendResponseHeaders(200, htmlResponse.length());
             outputStream.write(htmlResponse.getBytes());
             outputStream.flush();
             outputStream.close();
         }
     }
-
 }
