@@ -1,13 +1,12 @@
 package commands;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Test;
 
 public class ServeTest {
     private static final String TEST_PATH_1 = "test1/site/";
@@ -15,18 +14,17 @@ public class ServeTest {
     @Test
     public void testServeWithoutParameterThrowsException() {
         Serve serve = new Serve();
-        //assert que serve sans paramètre lance une exception
+        // assert que serve sans paramètre lance une exception
         NullPointerException thrown = assertThrows(NullPointerException.class, serve::call);
 
         assertEquals("Le nom de dossier ne peut pas être null", thrown.getMessage());
     }
 
-
     @Test
     public void testServeOnDirectoryThatDoesntExistsDoesntWork() throws IOException {
         Serve serve = new Serve();
         serve.rootDirectory = new File(TEST_PATH_1);
-        //essayer de refaire un serve sur un dossier non existant retourne une erreur
+        // essayer de refaire un serve sur un dossier non existant retourne une erreur
         assertEquals(serve.call(), -1);
     }
 

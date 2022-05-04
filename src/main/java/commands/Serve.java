@@ -3,9 +3,6 @@ package commands;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
-import picocli.CommandLine;
-import picocli.CommandLine.Command;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -17,6 +14,8 @@ import java.nio.file.Paths;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
 
 @Command(name = "serve", description = "Serve un site statique")
 public class Serve implements Callable<Integer> {
@@ -62,7 +61,8 @@ public class Serve implements Callable<Integer> {
     }
 
     private void startServer(int port) throws IOException {
-        ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
+        ThreadPoolExecutor threadPoolExecutor =
+                (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
         HttpServer server = HttpServer.create(new InetSocketAddress("localhost", port), 0);
         server.createContext("/", new MyHttpHandler());
         server.setExecutor(threadPoolExecutor);
@@ -78,7 +78,8 @@ public class Serve implements Callable<Integer> {
 
         private void handleResponse(HttpExchange httpExchange) throws IOException {
             OutputStream outputStream = httpExchange.getResponseBody();
-            String htmlResponse = readFile(rootDirectory + "/build/index.html", StandardCharsets.UTF_8);
+            String htmlResponse =
+                    readFile(rootDirectory + "/build/index.html", StandardCharsets.UTF_8);
             httpExchange.sendResponseHeaders(200, htmlResponse.length());
             outputStream.write(htmlResponse.getBytes());
             outputStream.flush();
