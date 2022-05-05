@@ -1,17 +1,16 @@
 package commands;
 
-import picocli.CommandLine.Command;
-import picocli.CommandLine.Parameters;
-
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.concurrent.Callable;
+import org.apache.commons.io.FileUtils;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Parameters;
 
+/** Cette classe est utilisée en conjonction avec picocli pour initialiser un site static. */
 @Command(name = "init", description = "Initialise un dossier pour le site statique")
 public class Init implements Callable<Integer> {
     // Chemin vers le template
@@ -25,22 +24,24 @@ public class Init implements Callable<Integer> {
         if (path == null) {
             throw new NullPointerException("PATH ne doit pas etre null");
         }
-        // Crée le File associé au path
-        File destination = new File(path + "/index.md");
-        // Vérifie si le dossier existe déjà
-        if (destination.exists()) {
-            System.err.println("Le dossier existe déjà");
+        var ri = Build.class.getClassLoader().getResource("exempleSite");
+        if (ri == null) {
+            throw new RuntimeException("Le dossier exempleSite n'a pas été trouvé");
+        }
+        if (Files.exists(Path.of(Paths.get(path).toString(), "content"))) {
+            System.err.println(
+                    "Le dossier "
+                            + Path.of(Paths.get(path).toString(), "content")
+                            + " existe  déjà");
             return -1;
         }
-        if (!destination.mkdirs()) {
-            System.err.println("Impossible de créer le dossier");
+        try {
+            var srcFile = Path.of(ri.getPath()).toFile();
+            FileUtils.copyDirectory(srcFile, Path.of(path).toFile());
+        } catch (IOException e) {
+            e.printStackTrace();
             return -1;
         }
-
-        // Copie le template dans le dossier créé
-        Files.copy(TEMPLATE_PATH, destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
-        System.out.println("Template créé ici: " + destination.toPath());
         return 0;
     }
-
 }
