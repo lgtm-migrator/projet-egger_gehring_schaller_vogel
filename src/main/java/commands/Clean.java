@@ -2,10 +2,8 @@ package commands;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Comparator;
 import java.util.concurrent.Callable;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
@@ -31,14 +29,5 @@ public class Clean implements Callable<Integer> {
 
         DirectoryDeleter.delete(file);
         return 0;
-    }
-
-    public static void deleteRecursive(Path directory) throws IOException {
-        if (Files.exists(directory)) {
-            Files.walk(directory)
-                    .sorted(Comparator.reverseOrder())
-                    .map(Path::toFile)
-                    .forEach(File::delete);
-        }
     }
 }
