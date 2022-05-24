@@ -1,8 +1,7 @@
 import commands.*;
+import java.util.concurrent.Callable;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
-
-import java.util.concurrent.Callable;
 
 @Command(
         name = "statique",
