@@ -118,18 +118,18 @@ Cette section contient les différents problèmes que nous avons encourus, les s
 
 | **Tâche**                    | **Temps attendu**              | **Temps réel**                           | **Remarques**             |
 |------------------------------|--------------------------------|------------------------------------------|---------------------------|
+| Modifier la commande init afin d'intégrer les templates HTML #68 | 1h | 10min | Moins de temps que prévu car la tâche était déjà faite dans build |
+| Faire la transition afin de changer de pandoc vers le moteur de templates choisi #67 | 4h | 9h | Plus de travail que prévu et des bugs a corriger |
 | Ecrire des test d'intégration et des tests systèmes #65 | 30min | 25min | |
 | Mettre en place un déploiement continu à l'aide de GitHub actions #63 | 1h30 | 3h | Sans connaissances au préalable faire l'action a pris plus de temps que prévu |
-| Modifier la commande init afin d'intégrer les templates HTML #68 | 1h | 10min | Moins de temps que prévu car déjà fait dans build |
-| Implémenter la commande "serve" à l'aide de picocli #62 | 1h30 | 4h |  |
-| Faire la transition afin de changer de pandoc vers le moteur de templates choisi #67 | 4h | 9h | Plus de travail que prévu et des bugs a corriger|
+| Implémenter la commande "serve" à l'aide de picocli #62 | 1h30 | 4h | Le temps attendu a été sous-estimé et la difficulté était plus grande qu'attendue |
 | Faire des templates de PR et issue #56 | 15min | 15min | |
-| Implémenter la méthode clean à l'aide de picocli #27 | 2h | 1h30 | |
 | Implémenter la méthode build à l'aide de picocli #31 | 2h30 | 3h | La création des tests a pris plus de temps que prévu |
 | Ajouter une condition qui empêche de merge une pull request si la compilation ou les tests produisent des erreurs, ou si le code n'est pas bien formaté #29 | 2h | 2h | |
 | Implémenter la méthode init à l'aide de picocli #30 | 1h30 | 1h30 | |
+| Implémenter la méthode clean à l'aide de picocli #27 | 2h | 1h30 | |
 | Implémenter l'option -version en utilisant picocli #26 | 30min | 35min | |
-| Traduire les différents contenus en français #25 | 1h | 45min | |
+| Traduire les différents contenus en français #25 | 1h | 45min | Plusieurs personnes ont participé ce qui a réduit le temps. |
 
 ## Retour sur le Sprint 1
 
