@@ -1,15 +1,13 @@
 package commands;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.*;
-
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import utils.DirectoryDeleter;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ServeTest {
     private static final String TEST_PATH_1 = "test1/site/";
@@ -30,6 +28,7 @@ public class ServeTest {
         // essayer de refaire un serve sur un dossier non existant retourne une erreur
         assertEquals(serve.call(), -1);
     }
+
     @Test
     public void testSiteWorksAfterBuild() throws IOException, URISyntaxException {
         Init init = new Init();
