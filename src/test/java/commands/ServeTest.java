@@ -1,12 +1,13 @@
 package commands;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.IOException;
-import org.junit.jupiter.api.AfterAll;
+import java.net.*;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import utils.DirectoryDeleter;
 
 public class ServeTest {
     private static final String TEST_PATH_1 = "test1/site/";
@@ -28,19 +29,44 @@ public class ServeTest {
         assertEquals(serve.call(), -1);
     }
 
-    @AfterAll
-    public static void deleteDirectories() {
-        File directory1 = new File(TEST_PATH_1);
-        deleteDirectory(directory1);
+    @Test
+    public void testServeRespondsOnSocket() throws IOException, URISyntaxException {
+        Init init = new Init();
+        Build build = new Build();
+        Serve serve = new Serve();
+        init.path = TEST_PATH_1;
+        build.rootDirectory = new File(TEST_PATH_1);
+        serve.rootDirectory = new File(TEST_PATH_1);
+        init.call();
+        build.call();
+        assertEquals(serve.call(), 0);
+        assertTrue(isSocketAlive("localhost", 4242));
     }
 
-    private static void deleteDirectory(File directory) {
-        File[] allContents = directory.listFiles();
-        if (allContents != null) {
-            for (File file : allContents) {
-                deleteDirectory(file);
-            }
+    @AfterEach
+    public void deleteDirectories() {
+        File directory1 = new File(TEST_PATH_1);
+        DirectoryDeleter.delete(directory1);
+    }
+
+    private boolean isSocketAlive(String hostName, int port) {
+        boolean isAlive = false;
+
+        // Creates a socket address from a hostname and a port number
+        SocketAddress socketAddress = new InetSocketAddress(hostName, port);
+        Socket socket = new Socket();
+
+        // Timeout required - it's in milliseconds
+        int timeout = 2000;
+
+        try {
+            socket.connect(socketAddress, timeout);
+            socket.close();
+            isAlive = true;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        directory.delete();
+        return isAlive;
     }
 }
