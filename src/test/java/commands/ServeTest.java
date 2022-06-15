@@ -30,7 +30,7 @@ public class ServeTest {
     }
 
     @Test
-    public void testSiteWorksAfterBuild() throws IOException, URISyntaxException {
+    public void testServeRespondsOnSocket() throws IOException, URISyntaxException {
         Init init = new Init();
         Build build = new Build();
         Serve serve = new Serve();
