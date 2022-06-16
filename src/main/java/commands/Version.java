@@ -1,26 +1,29 @@
 package commands;
 
-import picocli.CommandLine.Command;
-
 import java.util.Properties;
 import java.util.concurrent.Callable;
+import picocli.CommandLine.Command;
 
-@Command(name = "-version", description = "Prints the version of the program")
+/***
+ * Cette class implémente la commanded version du programme et affiche la version du programme
+ */
+@Command(name = "-version", description = "Affiche la version du programme")
 public class Version implements Callable<Integer> {
     @Override
     public Integer call() {
         try {
-            //create a new property file
+            // crée un fichier de propriété
             final Properties properties = new Properties();
-            //load the one we store the version in
-            properties.load(Version.class.getClassLoader().getResourceAsStream("project.properties"));
-            //get the version
+            // le charge
+            properties.load(
+                    Version.class.getClassLoader().getResourceAsStream("project.properties"));
+            // récupère la version
             System.out.println("Statique :\tv" + properties.getProperty("version"));
         } catch (Exception e) {
-            System.out.println("Error while reading version number:\n" + e.getMessage());
+            System.out.println(
+                    "Error lors de la lecture du numéros de version:\n" + e.getMessage());
             return -1;
         }
         return 0;
     }
-
 }

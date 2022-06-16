@@ -19,17 +19,30 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import utils.Watcher;
 
+/**
+ * Cette classe implémente la commande serve du programme, lorsque la commande est lancée, un
+ * serveur http et lancé et le site statique est généré
+ */
 @Command(name = "serve", description = "Serve un site statique")
 public class Serve implements Callable<Integer> {
 
+    /***
+     * roorDirectory contient le fichier ou se situe le site. Il est initialisé automatiquement par picocli
+     */
     @CommandLine.Parameters(
             paramLabel = "rootDirectory",
-            description = "root directory of markdown files")
+            description = "répertoire racine root des fichiers markdown")
     public File rootDirectory;
 
     @CommandLine.Option(names = {"-w", "--watch"})
     private boolean hotReload = false;
 
+    /**
+     * cette méthode exécute l'action principale de la classe, ici la commande serve
+     *
+     * @return 0 si tout est en ordre, -1 sinon
+     * @throws IOException
+     */
     @Override
     public Integer call() throws IOException {
         // Validation du paramètre
